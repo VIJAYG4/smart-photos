@@ -5,7 +5,7 @@ function searchPhoto()
 
   var apigClient = apigClientFactory.newClient();
 
-    var user_message = document.getElementById('note-textarea').value;
+    var user_message = document.getElementById('transcript').value;
 
     var body = { };
     var params = {q : user_message};
@@ -28,7 +28,7 @@ function searchPhoto()
         resp_data.forEach( function(obj) {
 
             var img = new Image();
-            img.src = "https://s3.amazonaws.com/assignementb2/"+obj;
+            img.src = "https://s3.amazonaws.com/test-photo-storage/"+obj;
             img.setAttribute("class", "banner-img");
             img.setAttribute("alt", "effy");
             document.getElementById("displaytext").innerHTML = "Images returned are : "
@@ -100,7 +100,7 @@ function uploadPhoto()
   let config = {
       headers: { 'Content-Type': file.type }
   };
-  url = 'https://cors-anywhere.herokuapp.com/https://80ekmxkib3.execute-api.us-east-1.amazonaws.com/first/upload/assignementb2/' + file.name
+  url = 'https://cors-anywhere.herokuapp.com/https://ldtdq1nrgb.execute-api.us-east-1.amazonaws.com/s1/upload/test-photo-storage/' + file.name
   axios.put(url, file, config).then(response => {
       // console.log(response.data)
       alert("Image uploaded successfully!");
